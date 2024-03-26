@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 class ProductTag extends Model { }
 
 //table utilised for many to many relationship as 'through' ie. junction model w/ foreign keys
-
+//this is a 'junction' table for many to many relationships
 ProductTag.init(
   {
     product_id: {
