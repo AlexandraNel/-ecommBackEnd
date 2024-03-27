@@ -9,6 +9,14 @@ class ProductTag extends Model { }
 //this is a 'junction' table for many to many relationships
 ProductTag.init(
   {
+    // primary key
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+
     product_id: {
       type: DataTypes.INTEGER,
       references: {

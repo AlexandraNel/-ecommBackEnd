@@ -1,12 +1,13 @@
 const express = require('express');
+const session = require('express-session');
 const routes = require('./routes');
-// import sequelize connection
-
-const app = express();
-const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+
+const app = express();
+const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: 'Super secret secret', //prevents hijacking of session
@@ -31,7 +32,7 @@ app.use(routes);
 
 // sync sequelize models to the database, then turn on the server
 //force true= drops tables good for dev. switched to false after dev
-sequelize.sync({ force: true }).then(() => { 
+sequelize.sync({ force: false }).then(() => { 
   app.listen(PORT, () => 
   console.log(`App listening on port ${PORT}!`));
 });
